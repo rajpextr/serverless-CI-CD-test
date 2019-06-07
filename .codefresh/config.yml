@@ -56,15 +56,16 @@ steps:
       - echo $CF_UNIT_TEST_STATUS
       
   deploy:
-    image: codefresh/serverless:1.28
+    #image: codefresh/serverless:1.28
+    image: nikolaik/python-nodejs:latest
     stage: deploy
     title: deploy to GCP with serverless framework
     working_directory: ${{main_clone}}/ts-sandbox/functions
     commands:
       - pwd
       - ls ../../.gcloud
-      - npm install serverless-google-cloudfunctions
-      - serverless deploy
+      #- npm install serverless-google-cloudfunctions
+      - firebase deploy
     when:
       condition:
         all:
