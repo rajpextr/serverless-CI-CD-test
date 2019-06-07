@@ -56,19 +56,19 @@ steps:
       - echo $CF_UNIT_TEST_STATUS
       
   deploy:
-    #image: codefresh/serverless:1.28
-    image: nikolaik/python-nodejs:latest
+    image: codefresh/serverless:1.28
+    #image: nikolaik/python-nodejs:latest
     stage: deploy
     title: deploy to GCP with serverless framework
     working_directory: ${{main_clone}}/ts-sandbox/functions
     commands:
       - pwd
-      - npm install -g firebase-tools@6.8.0
-      - firebase use --add saas-cloud-prototype 
-      #- npm install serverless-google-cloudfunctions
+      #- npm install -g firebase-tools@6.8.0
+      #- firebase use --add saas-cloud-prototype 
+      - npm install serverless-google-cloudfunctions
       #- firebase use default
-      - firebase deploy --project saas-cloud-prototype
-      #- firebase deploy
+      #- firebase deploy --project saas-cloud-prototype
+      - serverless deploy
     when:
       condition:
         all:
