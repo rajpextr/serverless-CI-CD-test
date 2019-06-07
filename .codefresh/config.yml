@@ -63,8 +63,10 @@ steps:
     working_directory: ${{main_clone}}/ts-sandbox/functions
     commands:
       - pwd
-      - ls ../../.gcloud
+      - npm install -g firebase-tools@6.8.0
+      - firebase use --add saas-cloud-prototype 
       #- npm install serverless-google-cloudfunctions
+      - firebase login:ci
       - firebase deploy
     when:
       condition:
