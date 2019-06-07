@@ -62,7 +62,7 @@ steps:
     working_directory: ${{main_clone}}/ts-sandbox/functions
     commands:
       - pwd
-      - ls ${{main_clone}}/.gcloud
+      - ls ../../.gcloud
       - npm install serverless-google-cloudfunctions
       - serverless deploy
     when:
