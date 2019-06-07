@@ -7,12 +7,11 @@ stages:
   - post-deploy
 steps:
   main_clone:
-    title: Cloning main repository...
-    type: git-clone
-    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
-    revision: '${{CF_REVISION}}'
-    stage: clone
-    git: CF-default
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "rajpextr/serverless-CI-CD-test"
+    revision: "${{CF_BRANCH}}"
+    stage: "clone"
 
   setup:
     image: alpine:3.7
