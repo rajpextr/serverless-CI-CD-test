@@ -1,6 +1,6 @@
+napi.post("/user").form({"userId": "testa", "email": "testa@test.com"})
 napi.get("/user/testa")
-napi.post("/user").form({"userId": "testb", "email": "testaaa@test.com"})
-napi.get("/user/testaa")
+napi.post("/user").form({"userId": "testb", "email": "testb@test.com"})
 napi.get("/user/testb")
 napi.delete("/user/testb")
 napi.post("/user").form({"userId": "teste", "email": "testaaa@test.com"})
