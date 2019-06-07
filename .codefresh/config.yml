@@ -15,12 +15,15 @@ steps:
 
   setup:
     image: alpine:3.7
+    working_directory: ${{main_clone}}
     stage: prepare
     title: generate GCP shared credentials file
     commands:
       - mkdir -p .gcloud
       - echo -n $GCP_CREDENTIALS_FILE | base64 -d > ${PWD}/.gcloud/keyfile.json
       - cf_export GCP_SHARED_CREDENTIALS_FILE=${PWD}/.gcloud/keyfile.json
+      - ls ${PWD}/.gcloud/
+      - cat ${PWD}/.gcloud/keyfile.json
 
   lint:
     image: nikolaik/python-nodejs:latest
@@ -58,6 +61,8 @@ steps:
     title: deploy to GCP with serverless framework
     working_directory: ${{main_clone}}/ts-sandbox/functions
     commands:
+      - pwd
+      - ls ${{main_clone}}/.gcloud
       - npm install serverless-google-cloudfunctions
       - serverless deploy
     when:
